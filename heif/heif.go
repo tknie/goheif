@@ -24,17 +24,18 @@ package heif
 import (
 	"errors"
 	"fmt"
-	"github.com/tknie/goheif/heif/bmff"
 	"io"
 	"log"
+
+	"github.com/tknie/goheif/heif/bmff"
 )
 
 // File represents a HEIF file.
 //
 // Methods on File should not be called concurrently.
 type File struct {
-	ra      io.ReaderAt
-	primary *Item
+	ra io.ReaderAt
+	// primary *Item
 
 	// Populated lazily, by getMeta:
 	metaErr error

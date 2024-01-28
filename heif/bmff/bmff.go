@@ -65,7 +65,7 @@ func (t BoxType) EqualString(s string) bool {
 	return len(s) == 4 && s[0] == t[0] && s[1] == t[1] && s[2] == t[2] && s[3] == t[3]
 }
 
-type parseFunc func(b box, br *bufio.Reader) (Box, error)
+//type parseFunc func(b box, br *bufio.Reader) (Box, error)
 
 // Box represents a BMFF box.
 type Box interface {
@@ -173,7 +173,7 @@ func (r *Reader) ReadBox() (Box, error) {
 		return nil, io.EOF
 	}
 	if r.lastBox != nil {
-		if _, err := io.Copy(ioutil.Discard, r.lastBox.Body()); err != nil {
+		if _, err := io.Copy(io.Discard, r.lastBox.Body()); err != nil {
 			return nil, err
 		}
 	}
@@ -354,7 +354,7 @@ func parseItemInfoEntry(outer *box, br *bufReader) (Box, error) {
 	}
 	ie := &ItemInfoEntry{FullBox: fb}
 	if fb.Version != 2 {
-		return nil, fmt.Errorf("TODO: found version %d infe box. Only 2 is supported now.", fb.Version)
+		return nil, fmt.Errorf("TODO: found version %d infe box, only 2 is supported now", fb.Version)
 	}
 
 	ie.ItemID, _ = br.readUint16()
