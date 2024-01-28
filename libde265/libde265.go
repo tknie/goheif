@@ -1,7 +1,8 @@
 package libde265
 
-//#cgo CXXFLAGS: -Ilibde265 -I. -std=c++11 -Wno-constant-conversion -msse4.1
-//#cgo CFLAGS: -I.
+//#cgo CXXFLAGS: -Ilibde265 -I. -I/opt/homebrew/include/ -std=c++11 -Wno-constant-conversion -msse4.1
+//#cgo CFLAGS: -I. -I/opt/homebrew/include/
+//#cgo LDFLAGS: -L/opt/homebrew/lib -lde265
 // #include <stdint.h>
 // #include <stdlib.h>
 // #include "libde265/de265.h"
